@@ -1,5 +1,4 @@
 // apb_regs.sv : APB slave with a small register file 
-//
 // Register map (32-bit registers, byte addresses):
 //   0x00  CTRL   read/write   reset 0
 //   0x04  DATA0  read/write   reset 0
