@@ -1,0 +1,52 @@
+--- Test 1: ID after reset
+PASS  ID = a9b00001
+PASS  ID err = 00000000
+--- Test 2: reset values
+PASS  CTRL = 00000000
+PASS  CTRL err = 00000000
+PASS  DATA0 = 00000000
+PASS  DATA0 err = 00000000
+PASS  DATA1 = 00000000
+PASS  DATA1 err = 00000000
+--- Test 3: write / read back
+PASS  write CTRL err = 00000000
+PASS  write DATA0 err = 00000000
+PASS  write DATA1 err = 00000000
+PASS  CTRL = 11110000
+PASS  DATA0 = cafe0001
+PASS  DATA1 = 5a5aa5a5
+--- Test 4: read twice
+PASS  DATA0 read 1 = cafe0001
+PASS  DATA0 read 2 = cafe0001
+--- Test 5: write to ID
+PASS  write ID err = 00000001
+PASS  ID unchanged = a9b00001
+PASS  read ID err = 00000000
+--- Test 6: unaligned addresses
+PASS  read 0x06 err = 00000001
+PASS  write 0x06 err = 00000001
+PASS  write 0x0A err = 00000001
+PASS  DATA0 untouched = cafe0001
+PASS  DATA1 untouched = 5a5aa5a5
+--- Test 7: out-of-range addresses
+PASS  read 0x10 err = 00000001
+PASS  write 0x14 err = 00000001
+PASS  DATA0 untouched by 0x14 = cafe0001
+--- Test 8: PSEL = 0 traffic
+PASS  our PRDATA during other write = 00000000
+PASS  our PRDATA during other read = 00000000
+PASS  CTRL unchanged = 11110000
+--- Test 9: back-door
+PASS  back-door CTRL = 11110000
+PASS  back-door DATA0 = cafe0001
+PASS  back-door DATA1 = 5a5aa5a5
+--- Test 10: reset again
+PASS  CTRL after reset = 00000000
+PASS  DATA0 after reset = 00000000
+PASS  DATA1 after reset = 00000000
+PASS  ID after reset = a9b00001
+==========================================
+TEST PASSED
+==========================================
+$finish called at time : 915 ns 
+
