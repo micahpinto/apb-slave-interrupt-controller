@@ -1,0 +1,48 @@
+--- Test 1: reset values
+PASS  ENABLE = 00000000
+PASS  STATUS = 00000000
+PASS  CLEAR = 00000000
+PASS  ACTIVE = 00000000
+PASS  o_Irq = 00000000
+--- Test 2: request is remembered
+PASS  STATUS = 00000004
+PASS  o_Irq masked = 00000000
+--- Test 3: clear one bit
+PASS  write CLEAR err = 00000000
+PASS  STATUS after clear = 00000004
+--- Test 4: mask
+PASS  STATUS = 00000008
+PASS  o_Irq before enable = 00000000
+PASS  o_Irq after enable = 00000001
+PASS  o_Irq after clear = 00000000
+--- Test 5: priority
+PASS  ACTIVE src1 = 80000001
+PASS  ACTIVE src3 = 80000003
+PASS  ACTIVE none = 00000000
+PASS  o_Irq none = 00000000
+--- Test 6: errors
+PASS  write STATUS err = 00000001
+PASS  read CLEAR err = 00000000
+PASS  read CLEAR data = 00000000
+PASS  write 0x10 err = 00000001
+--- Test 7: unused bits, more errors
+PASS  ENABLE unused bits = 0000000f
+PASS  write ACTIVE err = 00000001
+PASS  read 0x06 err = 00000001
+--- Test 8: clear several bits
+PASS  STATUS all = 0000000f
+PASS  STATUS none = 00000000
+--- Test 9: PSEL = 0 traffic
+PASS  PRDATA other write = 00000000
+PASS  PRDATA other clear = 00000000
+PASS  ENABLE unchanged = 0000000f
+PASS  STATUS unchanged = 00000001
+--- Test 10: reset
+PASS  ENABLE after reset = 00000000
+PASS  STATUS after reset = 00000000
+PASS  ACTIVE after reset = 00000000
+PASS  o_Irq after reset = 00000000
+==========================================
+TEST PASSED
+==========================================
+$finish called at time : 1265 ns
